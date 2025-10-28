@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Ashtami B — AI/ML Enthusiast & Open Source Learner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Portfolio of Ashtami B — AI/ML Enthusiast & Open Source Learner. Projects: Pro-Bot, Titanic EDA, NumPy & Pandas mini projects.">
+  <style>
+    :root {
+      --bg: #FFF9F7;
+      --card: #FFFFFF;
+      --accent1: #A7C7E7; /* azure */
+      --accent2: #FFD6E0; /* blush */
+      --accent3: #F3EDF9; /* soft lavender */
+      --text: #2F2F2F;
+      --muted: #6B6B6B;
+      --glass: rgba(255,255,255,0.62);
+      --rounded: 18px;
+      --shadow: 0 10px 30px rgba(40,40,40,0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height:100%; font-family: 'Quicksand', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: linear-gradient(180deg, var(--bg), #ffffff); color: var(--text); scroll-behavior:smooth; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width:100%; display:block; }
+
+    /* Header / Nav */
+    header {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 40px);
+      max-width: 1200px;
+      background: var(--glass);
+      border-radius: 14px;
+      padding: 10px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+      z-index: 999;
+      transition: all 0.35s ease;
+      backdrop-filter: blur(8px);
+    }
+    header.scrolled { background: linear-gradient(90deg, rgba(167,199,231,0.95), rgba(255,214,224,0.95)); color: white; }
+    .brand { display:flex; align-items:center; gap:12px; cursor:pointer; }
+    .avatar {
+      width:56px; height:56px; border-radius:12px;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      color: #fff; display:flex; align-items:center; justify-content:center;
+      font-weight:700; font-size:18px; box-shadow: var(--shadow);
+      transition: transform 0.35s ease;
+    }
+    .avatar:hover { transform: rotate(6deg) scale(1.04); }
+    .title h1 { font-size:18px; line-height:1; }
+    .title p { font-size:12px; color: var(--muted); margin-top:2px; }
+
+    nav { display:flex; gap:10px; }
+    nav a {
+      padding:8px 12px; border-radius:10px; font-weight:600; transition: all 0.25s;
+      background: transparent;
+    }
+    nav a:hover { transform: translateY(-3px); background: rgba(255,255,255,0.08); }
+
+    /* Page container */
+    main { max-width:1100px; margin:120px auto 80px; padding: 0 22px; }
+
+    /* Intro */
+    .intro {
+      background: var(--card);
+      border-radius: var(--rounded);
+      padding: 28px;
+      text-align:center;
+      box-shadow: var(--shadow);
+      animation: subtleZoom 700ms ease both;
+    }
+    @keyframes subtleZoom { from { opacity:0; transform: translateY(8px) scale(0.995);} to { opacity:1; transform:translateY(0) scale(1);} }
+    .intro h2 {
+      font-size:26px; margin-bottom:10px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .intro p { color:var(--muted); line-height:1.6; font-size:15px; }
+    .chips { margin-top:16px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+    .chip {
+      padding:8px 12px; border-radius:999px; background: var(--accent3); font-weight:700; color:var(--text);
+      transition: all 0.28s ease;
+    }
+    .chip:hover { transform: translateY(-4px); background: linear-gradient(90deg,var(--accent1),var(--accent2)); color:#fff; }
+
+    /* Sections */
+    section { margin-top:46px; opacity:0; transform: translateY(14px); transition: all 560ms cubic-bezier(.2,.9,.2,1); }
+    section.visible { opacity:1; transform: translateY(0); }
+
+    .section-title { text-align:center; font-size:20px; margin-bottom:18px; font-weight:700; color:var(--text); }
+
+    .grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), var(--card));
+      border-radius:14px;
+      padding:18px;
+      box-shadow: var(--shadow);
+      transition: transform 380ms ease, box-shadow 380ms ease;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .card:hover { transform: translateY(-8px) rotate(-0.35deg); box-shadow: 0 18px 50px rgba(30,30,30,0.08); }
+
+    .proj-image {
+      height:140px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+      color:white; font-weight:700; background: linear-gradient(135deg,var(--accent1),var(--accent2));
+      margin-bottom:10px; box-shadow: 0 6px 24px rgba(0,0,0,0.05);
+    }
+
+    .pill {
+      display:inline-block; padding:8px 12px; border-radius:999px; background:var(--accent3); font-weight:700; color:var(--text);
+      transition: all 0.25s ease; text-decoration:none;
+    }
+    .pill:hover { background: linear-gradient(90deg,var(--accent1),var(--accent2)); color:white; transform: translateY(-4px); }
+
+    /* Experience timeline-ish */
+    .experience-list { display:grid; gap:14px; }
+    .exp-item { display:flex; gap:14px; align-items:flex-start; }
+    .exp-dot {
+      min-width:48px; min-height:48px; border-radius:10px; background: linear-gradient(135deg,var(--accent2),var(--accent1));
+      color:white; display:flex; align-items:center; justify-content:center; font-weight:700; box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+    .exp-body h4 { margin:0; font-size:16px; }
+    .exp-body p { margin:6px 0 0; color:var(--muted); font-size:14px; }
+
+    /* Skills chips */
+    .skills-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+
+    /* Footer */
+    footer {
+      margin-top:48px; padding:18px; border-radius:12px; background: linear-gradient(90deg,var(--accent1),var(--accent2)); color:white;
+      display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;
+    }
+
+    /* Cursor glow (subtle) */
+    .cursor {
+      position: fixed; width:18px; height:18px; border-radius:50%;
+      pointer-events:none; z-index:9999; mix-blend-mode:multiply; opacity:0.45;
+      background: radial-gradient(circle at 30% 30%, rgba(167,199,231,0.95), rgba(255,214,224,0.5) 45%, transparent 60%);
+      transform: translate(-50%,-50%); transition: transform 40ms linear;
+    }
+
+    /* Responsive */
+    @media(max-width:800px){
+      header { left:8px; right:8px; transform:none; width:auto; padding:10px; }
+      .intro h2 { font-size:22px; }
+      .proj-image { height:120px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+
+  <header id="pageHeader">
+    <div class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Home">
+      <div class="avatar" aria-hidden="true">AB</div>
+      <div class="title">
+        <h1>Ashtami B</h1>
+        <p>AI/ML Enthusiast & Open Source Learner</p>
+      </div>
+    </div>
+
+    <nav aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- INTRO -->
+    <section id="about" class="visible-on-load">
+      <div class="intro" role="region" aria-labelledby="about-heading">
+        <h2 id="about-heading">Hi — I’m Ashtami. I build things that learn.</h2>
+        <p>I’m a BCA student at <strong>Amrita Vishwa Vidyapeetham, Kochi</strong>, focused on Artificial Intelligence, Machine Learning, and open-source collaboration. I enjoy building projects that bridge creativity with logic and am actively contributing to open-source and student communities.</p>
+        <div class="chips" aria-hidden="true">
+          <div class="chip">Pro-Bot</div>
+          <div class="chip">Titanic EDA</div>
+          <div class="chip">NumPy & Pandas</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE (placed above projects) -->
+    <section id="experience" aria-labelledby="exp-title">
+      <div class="section-title" id="exp-title">Experience</div>
+      <div class="experience-list">
+        <div class="card exp-item" aria-label="GSSOC contributor">
+          <div class="exp-dot">G</div>
+          <div class="exp-body">
+            <h4>GirlScript Summer of Code (GSSOC) 2025 — Contributor</h4>
+            <p>Contributed to open-source repositories during GSSOC 2025. Worked collaboratively with maintainers, submitted PRs, fixed issues, and followed standard Git/GitHub workflows to improve code quality and documentation.</p>
+          </div>
+        </div>
+
+        <div class="card exp-item" aria-label="Internshala student partner">
+          <div class="exp-dot">I</div>
+          <div class="exp-body">
+            <h4>Internshala Student Partner — ISP Program</h4>
+            <p>Acted as an ISP representative promoting career development programs on campus. Coordinated student engagement events, communicated program benefits, and gained experience in leadership and peer outreach.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="section-title" id="projects-title">Projects & Hackathons</div>
+      <div class="grid projects">
+        <div class="card" role="article" aria-labelledby="probot-title">
+          <div class="proj-image" aria-hidden="true">Pro-Bot</div>
+          <h3 id="probot-title">Pro-Bot — Live Classroom AI Feedback System</h3>
+          <p style="color:var(--muted)">Pro-Bot monitors classroom video streams using computer vision and lightweight emotion/engagement models. It analyzes facial cues and gaze to estimate whether students are attentive, distracted, or confused, and provides a live dashboard for educators with anonymized metrics and suggested interventions.</p>
+          <div style="margin-top:8px">
+            <a class="pill" href="https://github.com/AshtamiBiju/Live-Classroom-AI-Feedback-System" target="_blank" rel="noopener">Repository</a>
+          </div>
+        </div>
+
+        <div class="card" role="article" aria-labelledby="titanic-title">
+          <div class="proj-image" aria-hidden="true">Titanic EDA</div>
+          <h3 id="titanic-title">Titanic — Exploratory Data Analysis</h3>
+          <p style="color:var(--muted)">A comprehensive EDA on the Titanic dataset focusing on feature engineering, visualizations, and deriving data-driven insights that inform predictive models.</p>
+          <div style="margin-top:8px">
+            <a class="pill" href="https://github.com/AshtamiBiju/Titanic-Survival-Prediction" target="_blank" rel="noopener">View Notebook</a>
+          </div>
+        </div>
+
+        <div class="card" role="article" aria-labelledby="mini-title">
+          <div class="proj-image" aria-hidden="true">NumPy / Pandas</div>
+          <h3 id="mini-title">Mini Projects — NumPy & Pandas</h3>
+          <p style="color:var(--muted)">Short hands-on projects and practice notebooks covering array manipulations, data cleaning, aggregation, and visualization — built to strengthen core data skills.</p>
+          <div style="margin-top:8px">
+            <a class="pill" href="https://github.com/AshtamiBiju" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" aria-labelledby="skills-title">
+      <div class="section-title" id="skills-title">Skills & Technologies</div>
+      <div class="grid">
+        <div class="card">
+          <p><strong>Languages & Tools</strong></p>
+          <div class="skills-chips" aria-hidden="true">
+            <div class="chip">Python</div>
+            <div class="chip">NumPy</div>
+            <div class="chip">Pandas</div>
+            <div class="chip">Matplotlib</div>
+            <div class="chip">Seaborn</div>
+            <div class="chip">SQL</div>
+            <div class="chip">C</div>
+            <div class="chip">Java / Advanced Java</div>
+            <div class="chip">Git & GitHub</div>
+            <div class="chip">OOPs & Data Structures</div>
+          </div>
+
+          <p style="margin-top:12px;"><strong>Certifications</strong></p>
+          <p style="color:var(--muted)">Infosys Springboard — AI Primer</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="section-title" id="contact-title">Contact</div>
+      <div class="grid">
+        <div class="card">
+          <p style="margin-bottom:10px">I’m available for internships, collaborations, and open-source contributions. Reach out — I respond faster than you think.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="pill" href="mailto:ashtamibijuviji@gmail.com">Email</a>
+            <a class="pill" href="https://github.com/AshtamiBiju" target="_blank" rel="noopener">GitHub</a>
+            <a class="pill" href="https://www.linkedin.com/in/ashtami-b-3a9042323" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <p style="color:var(--muted)"><strong>Education</strong></p>
+          <p>BCA — Amrita Vishwa Vidyapeetham, Kochi</p>
+          <p style="margin-top:10px;color:var(--muted)"><strong>Location</strong></p>
+          <p>Kochi, India</p>
+          <p style="margin-top:10px;color:var(--muted)"><strong>Availability</strong></p>
+          <p>Internships / Open Source / Part-time</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>© 2025 Ashtami B — AI/ML Enthusiast</div>
+    <div>Made with ☕ and a soft pastel dream</div>
+  </footer>
+
+  <script>
+    // --- simple scroll reveal ---
+    const sections = document.querySelectorAll('section');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) en.target.classList.add('visible');
+      });
+    }, { threshold: 0.18 });
+    sections.forEach(s => obs.observe(s));
+
+    // --- header color on scroll ---
+    const header = document.getElementById('pageHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // --- subtle cursor glow ---
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    // --- accessibility: focus visible for keyboard users on pills ---
+    document.querySelectorAll('.pill').forEach(btn => {
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') btn.click();
+      });
+    });
+
+    // ensure intro is visible on load
+    document.querySelectorAll('.visible-on-load').forEach(el => el.classList.add('visible'));
+  </script>
+</body>
+</html>
