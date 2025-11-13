@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ashtami B | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green-dark: #0f3d2e;
+      --green-mid: #167a52;
+      --green-light: #24b47e;
+      --white: #ffffff;
+      --muted: #d7e9df;
+      font-family: "Poppins", sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+    body { background: var(--green-dark); color: var(--white); overflow-x: hidden; }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(15, 61, 46, 0.8); backdrop-filter: blur(10px);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 3rem; z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      transition: background 0.4s ease;
+    }
+    nav.scrolled { background: rgba(15, 61, 46, 0.95); }
+    nav h1 { font-weight: 700; font-size: 1.3rem; transition: transform 0.3s; }
+    nav h1:hover { transform: scale(1.05); }
+    nav ul { list-style: none; display: flex; gap: 1.8rem; }
+    nav ul li a {
+      color: var(--white); text-decoration: none; font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+    nav ul li a:hover { color: var(--green-light); transform: scale(1.05); }
+
+    /* HEADER */
+    header {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      padding: 0 1.5rem; opacity: 0; transform: translateY(20px);
+      animation: fadeInUp 1.5s ease forwards;
+    }
+    header h2 { font-size: 1.1rem; font-weight: 400; color: var(--muted); margin-bottom: 0.5rem; }
+    header h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
+    header p { max-width: 650px; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+    .cta {
+      background: var(--green-light); color: var(--green-dark);
+      padding: 0.8rem 1.6rem; border-radius: 10px; font-weight: 700;
+      text-decoration: none; transition: 0.4s;
+      box-shadow: 0 0 0 rgba(36,180,126,0.4);
+    }
+    .cta:hover {
+      background: var(--white); color: var(--green-dark);
+      box-shadow: 0 0 15px rgba(36,180,126,0.6);
+      transform: scale(1.05);
+    }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; max-width: 1100px; margin: auto; opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+    section.visible { opacity: 1; transform: translateY(0); }
+    section h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; color: var(--green-light); }
+
+    .about p { max-width: 800px; margin: auto; text-align: center; color: var(--muted); line-height: 1.7; font-size: 1rem; }
+
+    /* SKILLS */
+    .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem; }
+    .skill {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.6rem 1.2rem; border-radius: 12px; font-weight: 600; transition: 0.3s;
+      transform: scale(1);
+    }
+    .skill:hover { background: var(--green-light); color: var(--green-dark); transform: scale(1.08); box-shadow: 0 0 10px rgba(36,180,126,0.6); }
+
+    /* PROJECTS */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .project-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+      padding: 1.5rem; border-radius: 16px; transition: transform 0.3s ease, background 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(255,255,255,0.07);
+      box-shadow: 0 0 15px rgba(36,180,126,0.4);
+    }
+    .project-card h3 { margin-bottom: 0.8rem; }
+    .project-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.8rem; }
+    .project-card a { color: var(--green-light); font-weight: 600; text-decoration: none; }
+
+    footer {
+      text-align: center; padding: 2rem; color: var(--muted);
+      background: #0b2b1e; font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      nav { flex-direction: column; gap: 0.5rem; }
+      header h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1>Ashtami B</h1>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h2>Hello, I'm</h2>
+    <h1>Ashtami B</h1>
+    <p>BCA student at Amrita Vishwa Vidyapeetham, passionate about Artificial Intelligence, Machine Learning, and software development. Currently learning data structures, AI/ML, and contributing to open-source projects.</p>
+    <a href="#projects" class="cta">View My Work</a>
+  </header>
+
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>Motivated and detail-oriented BCA student with a strong foundation in programming, data analysis, and problem-solving. I enjoy building efficient, creative solutions and continuously improving my skills. Currently exploring AI/ML and open-source contribution to grow as a well-rounded developer.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill">Python</div>
+      <div class="skill">Java</div>
+      <div class="skill">C / C++</div>
+      <div class="skill">SQL</div>
+      <div class="skill">GitHub</div>
+      <div class="skill">VS Code</div>
+      <div class="skill">NumPy</div>
+      <div class="skill">Pandas</div>
+      <div class="skill">Matplotlib</div>
+      <div class="skill">Seaborn</div>
+      <div class="skill">Machine Learning (Basics)</div>
+      <div class="skill">Data Structures & Algorithms</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>PRO-BOT: AI-Powered Classroom Feedback System</h3>
+        <p>Captures classroom video frames and analyzes student emotions and engagement. Generates real-time reports to track performance metrics using computer vision and ML models.</p>
+      </div>
+      <div class="project-card">
+        <h3>TEXTMORPH: Text Summarization & Paraphrasing</h3>
+        <p>Developed a Python pipeline using models like T5, BART, and PEGASUS to generate summaries, paraphrases, and similarity analysis with visualization of language patterns.</p>
+      </div>
+      <div class="project-card">
+        <h3>Open Source Contributions</h3>
+        <p>Contributing to open-source projects through GSSoC 2025, resolving issues, improving documentation, and learning collaborative development practices.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div style="text-align:center; margin-top:1rem;">
+      <p>Email: <a href="mailto:Ashtamibijuviji@gmail.com" style="color:var(--green-light)">Ashtamibijuviji@gmail.com</a></p>
+      <p>Phone: <a href="tel:+919400523191" style="color:var(--green-light)">+91 94005 23191</a></p>
+      <p>
+        <a href="https://github.com/AshtamiBiju" target="_blank" style="color:var(--green-light)">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/ashtami-b-3a9042323" target="_blank" style="color:var(--green-light)">LinkedIn</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Ashtami B | Designed with purpose and curiosity
+  </footer>
+
+  <script>
+    // Navbar background on scroll
+    window.addEventListener("scroll", () => {
+      const nav = document.querySelector("nav");
+      if (window.scrollY > 50) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll("section").forEach(sec => observer.observe(sec));
+  </script>
+</body>
+</html>
